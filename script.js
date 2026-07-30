@@ -116,6 +116,7 @@ function startGame() {
   if (timerId !== null) clearInterval(timerId);
   resetGame();
   running = true;
+  canvas?.focus();
   pauseButton.disabled = false;
   pauseButton.textContent = '일시정지';
   messageElement.textContent = '게임 중 — 먹이를 먹고 적을 피하세요.';
@@ -231,6 +232,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 touchButtons.forEach((button) => button.addEventListener('click', () => setDirection(button.dataset.direction)));
+canvas?.addEventListener('click', () => canvas.focus());
 startButton?.addEventListener('click', startGame);
 pauseButton?.addEventListener('click', togglePause);
 restartButton?.addEventListener('click', startGame);
