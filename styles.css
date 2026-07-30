@@ -47,10 +47,13 @@ main { width: min(100% - 2rem, 54rem); margin: 0 auto; padding: 3rem 0; }
 h1, h2 { margin-top: 0; line-height: 1.2; }
 h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); }
 .game-status, .muted { color: var(--muted); }
-.game-shell { display: grid; justify-items: center; gap: 1rem; margin-top: 1.25rem; }
+.game-shell { position: relative; display: grid; justify-items: center; gap: 1rem; overflow: hidden; margin-top: 1.25rem; padding: 1rem; border: 1px solid #283c78; border-radius: 0.75rem; background: radial-gradient(circle at 50% 0%, #233b7a, #080b2b 55%, #030414); }
+.game-shell::before { position: absolute; inset: -35%; z-index: 0; background-image: radial-gradient(circle, #ffffff 0 1px, transparent 1.5px), radial-gradient(circle, #8ec5ff 0 1px, transparent 1.5px), radial-gradient(circle, #ffffff 0 1px, transparent 1.5px); background-position: 0 0, 28px 44px, 90px 12px; background-size: 128px 128px, 176px 176px, 220px 220px; content: ''; opacity: 0.55; pointer-events: none; animation: star-drift 24s linear infinite; }
+.game-shell > * { position: relative; z-index: 1; }
+@keyframes star-drift { from { transform: translate3d(0, 0, 0) rotate(0deg); } to { transform: translate3d(-80px, 60px, 0) rotate(2deg); } }
 .game-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; width: 100%; }
 .game-stats span { padding: 0.35rem 0.7rem; border-radius: 999px; background: #e7f3ff; color: var(--blue-dark); font-size: 0.9rem; }
-#game-board { width: min(100%, 22.5rem); height: auto; aspect-ratio: 1; border: 3px solid var(--blue); border-radius: 0.5rem; background: #f8fbff; image-rendering: pixelated; }
+#game-board { width: min(100%, 22.5rem); height: auto; aspect-ratio: 1; border: 3px solid #6da8ff; border-radius: 0.5rem; background: #05082299; image-rendering: pixelated; }
 .game-message { min-height: 1.6em; margin: 0; color: var(--blue-dark); font-weight: 700; text-align: center; }
 .game-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
 .game-actions button, .touch-controls button { min-width: 5.5rem; padding: 0.65rem 0.9rem; border: 0; border-radius: 0.5rem; background: var(--blue); color: #fff; cursor: pointer; font: inherit; font-weight: 700; }
@@ -60,6 +63,10 @@ h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); }
 .touch-controls div { display: flex; gap: 0.4rem; }
 .touch-controls button { min-width: 3rem; padding: 0.55rem; touch-action: manipulation; }
 .game-help { margin: 0; color: var(--muted); font-size: 0.85rem; text-align: center; }
+.airplane-shell { display: grid; justify-items: center; gap: 1rem; margin-top: 1.25rem; padding: 1rem; border: 1px solid #7a4b2d; border-radius: 0.75rem; background: linear-gradient(180deg, #261d3b, #120f25); }
+.airplane-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; width: 100%; }
+.airplane-stats span { padding: 0.35rem 0.7rem; border-radius: 999px; background: #3b2a50; color: #ffd9a8; font-size: 0.9rem; }
+#airplane-board { width: min(100%, 22.5rem); height: auto; aspect-ratio: 3 / 4; border: 3px solid #ffb25b; border-radius: 0.5rem; background: #090719; image-rendering: pixelated; }
 .site-footer { padding: 2rem; color: var(--muted); text-align: center; }
 
 @media (max-width: 42rem) {
@@ -69,4 +76,9 @@ h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); }
   .primary-navigation.is-open { display: flex; }
   .primary-navigation a { padding: 0.7rem; }
   main { width: min(100% - 1rem, 54rem); padding-top: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .game-shell::before { animation: none; }
 }

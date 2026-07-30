@@ -70,6 +70,25 @@
         </div>
       </section>
 
+      <section id="airplane-game" class="content-card airplane-card" aria-labelledby="airplane-title">
+        <h2 id="airplane-title">Sky Defender</h2>
+        <p>비행기를 조종해 적의 공격을 피하는 게임입니다.</p>
+        <div class="airplane-shell">
+          <div class="airplane-stats" aria-live="polite">
+            <span>체력 <strong id="airplane-health">4</strong></span>
+            <span>점수 <strong id="airplane-score">0</strong></span>
+          </div>
+          <canvas id="airplane-board" width="360" height="480" tabindex="0" aria-label="Sky Defender 비행기 게임판"></canvas>
+          <p id="airplane-message" class="game-message" role="status">시작 버튼을 눌러 비행을 시작하세요.</p>
+          <div class="game-actions">
+            <button id="airplane-start" type="button">시작</button>
+            <button id="airplane-pause" type="button" disabled>일시정지</button>
+            <button id="airplane-restart" type="button">재시작</button>
+          </div>
+          <p class="game-help">방향키 또는 WASD로 이동 · Space로 공격 · 일반 적 1점 · 보스 10점</p>
+        </div>
+      </section>
+
       <section id="contact" class="content-card" aria-labelledby="contact-title">
         <h2 id="contact-title">Contact</h2>
         <p>이메일과 소셜 링크는 공개하지 않습니다.</p>
