@@ -17,7 +17,9 @@
       <nav id="primary-navigation" class="primary-navigation" aria-label="주요 메뉴">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
@@ -31,12 +33,46 @@
       <section id="about" class="content-card" aria-labelledby="about-title">
         <h2 id="about-title">About</h2>
         <p>회사 열심히 다니고 있습니다.</p>
+        <p>AI 시대에도 잘 적응해서 살아 봅시다.</p>
+      </section>
+
+      <section id="experience" class="content-card" aria-labelledby="experience-title">
+        <h2 id="experience-title">Experience</h2>
+        <p>S/W 개발자로 일하고 있습니다.</p>
+        <p class="muted">상세 경력과 기술 스택은 [사람 확인 필요]입니다.</p>
       </section>
 
       <section id="games" class="content-card games-card" aria-labelledby="games-title">
         <h2 id="games-title">Games</h2>
-        <p><strong>애플스네이크</strong>를 준비하고 있습니다.</p>
-        <p class="game-status">게임은 다음 루프에서 추가됩니다.</p>
+        <p><strong>애플스네이크</strong> — 보통 속도, 쉬운 난이도</p>
+        <div class="game-shell">
+          <div class="game-stats" aria-live="polite">
+            <span>점수 <strong id="score">0</strong></span>
+            <span>최고 점수 <strong id="high-score">0</strong></span>
+            <span>적 <strong id="enemy-count">5</strong></span>
+          </div>
+          <canvas id="game-board" width="360" height="360" aria-label="애플스네이크 게임판"></canvas>
+          <p id="game-message" class="game-message" role="status">시작 버튼을 눌러 게임을 시작하세요.</p>
+          <div class="game-actions">
+            <button id="start-game" type="button">시작</button>
+            <button id="pause-game" type="button" disabled>일시정지</button>
+            <button id="restart-game" type="button">재시작</button>
+          </div>
+          <div class="touch-controls" aria-label="모바일 게임 조작">
+            <button type="button" data-direction="up" aria-label="위로 이동">▲</button>
+            <div>
+              <button type="button" data-direction="left" aria-label="왼쪽으로 이동">◀</button>
+              <button type="button" data-direction="down" aria-label="아래로 이동">▼</button>
+              <button type="button" data-direction="right" aria-label="오른쪽으로 이동">▶</button>
+            </div>
+          </div>
+          <p class="game-help">방향키 또는 WASD로 이동 · Space로 일시정지 · 적과 부딪히면 폭발합니다.</p>
+        </div>
+      </section>
+
+      <section id="contact" class="content-card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>이메일과 소셜 링크는 공개하지 않습니다.</p>
       </section>
     </main>
 
