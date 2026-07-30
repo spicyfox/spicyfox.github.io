@@ -217,10 +217,13 @@ function draw() {
 }
 
 document.addEventListener('keydown', (event) => {
-  const keys = { ArrowUp: 'up', w: 'up', W: 'up', ArrowDown: 'down', s: 'down', S: 'down', ArrowLeft: 'left', a: 'left', A: 'left', ArrowRight: 'right', d: 'right', D: 'right' };
-  if (keys[event.key]) {
+  if (event.isComposing) return;
+  const directionsByCode = { ArrowUp: 'up', KeyW: 'up', ArrowDown: 'down', KeyS: 'down', ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right' };
+  const directionsByKey = { ArrowUp: 'up', w: 'up', W: 'up', ArrowDown: 'down', s: 'down', S: 'down', ArrowLeft: 'left', a: 'left', A: 'left', ArrowRight: 'right', d: 'right', D: 'right' };
+  const directionName = directionsByCode[event.code] || directionsByKey[event.key];
+  if (directionName) {
     event.preventDefault();
-    setDirection(keys[event.key]);
+    setDirection(directionName);
   } else if (event.code === 'Space') {
     event.preventDefault();
     togglePause();
